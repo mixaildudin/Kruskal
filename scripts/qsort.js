@@ -4,7 +4,7 @@
  * @param data Array
  * @param compare function(a, b) - возвращает 0 если a=b, -1 если a<b и 1 если a>b (необязательная)
  * @param change function(a, i, j) - меняет местами i-й и j-й элементы массива а (необязательная)
- *
+ * @return Array
  */
 function qsort(data, compare, change) {
 	var a = data,
