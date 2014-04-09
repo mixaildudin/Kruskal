@@ -40,6 +40,7 @@ function Kruskal() {
 				continue;
 			else {
 				spanTree.push( edge );
+				edge.setInSpanTree();
 				spanTreeWeight += edge.getWeight();
 
 				for( var j = 0; j < vertices.length; j++ ) {
@@ -97,6 +98,14 @@ function Kruskal() {
 			}
 		}
 		return edges;
+	}
+
+	this.getEdges = function() {
+		return edges;
+	}
+
+	this.getVertices = function() {
+		return vertices;
 	}
 
 	this.getSpanningTreeWeight = function() {

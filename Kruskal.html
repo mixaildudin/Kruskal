@@ -3,20 +3,65 @@
 <head>
 	<meta charset="utf-8" />
     <title>Алгоритм Краскала</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="scripts/jquery.js"></script>
 	<script type="text/javascript" src="scripts/qsort.js"></script>
 	<script type="text/javascript" src="scripts/kruskal.js"></script>
 	<script type="text/javascript" src="scripts/edge.js"></script>
 	<script type="text/javascript" src="scripts/vertex.js"></script>
+	<script type="text/javascript" src="scripts/graphview.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready( function() {
 			var a = new Kruskal();
 			var b = a.getSpanningTree();
+
+			var view = new GraphView( a.getVertices(), a.getEdges() );
+			view.draw();
+
+			alert( "Найдено минимальное остовное дерево длины " + a.getSpanningTreeWeight() );
 		});
 	</script>
 </head>
 <body>
+	<!--<div id="svg_container">
+		<svg />
+	</div>
+	<div id="controls_container">
+		<table id="controls">
+			<tr>
+				<td>
+					<table id="adj_matrix" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="Нарисовать и решить" />
+				</td>
+			</tr>
+		</table>
+	</div>-->
 
+	<table id="wrapper" cellpadding="0" cellspacing="0">
+		<tr>
+			<td class="wrapper_id">
+				<svg />
+			</td>
+			<td class="wrapper_id">
+				<table id="controls">
+					<tr>
+						<td>
+							<table id="adj_matrix" width="100%"></table>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<input type="button" value="Нарисовать и решить" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
