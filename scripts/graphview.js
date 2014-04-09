@@ -1,7 +1,7 @@
 function GraphView( vertices, edges ) {
 
 	var verticesToDraw = initVerticesToDraw(),
-		edgesToDraw = initEdgesToDraw(), weightsToDraw;
+		edgesToDraw = initEdgesToDraw();
 
 	/**
 	 * Нарисовать граф и его минимальное остовное дерево
@@ -9,7 +9,6 @@ function GraphView( vertices, edges ) {
 	this.draw = function() {
 		drawEdges();
 		drawVertices();
-		drawWeightNumbers();
 	}
 
 
@@ -132,6 +131,13 @@ function GraphView( vertices, edges ) {
 		return newEdge;
 	}
 
+	/**
+	 * Создать svg-элемент, который будет отображать вес ребра
+	 * @param x
+	 * @param y
+	 * @param weight
+	 * @returns {HTMLElement}
+	 */
 	function createNewEdgeWeight( x, y, weight ) {
 		var X_SHIFT = -6, Y_SHIFT = 3;
 		var newNumber = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -157,6 +163,9 @@ function GraphView( vertices, edges ) {
 		}
 	}
 
+	/**
+	 * Отрисовать ребра графа и их веса
+	 */
 	function drawEdges() {
 		var svg = document.getElementsByTagName('svg')[0];
 
@@ -167,16 +176,4 @@ function GraphView( vertices, edges ) {
 		}
 	}
 
-	function drawWeightNumbers() {
-
-	}
-
-	/*function initEdges() {
-		edgesToDraw = [];
-
-		for( var i = 0; i < edges.length; i++ ) {
-			var edge = edges[i];
-			edgesToDraw
-		}
-	}*/
 }
