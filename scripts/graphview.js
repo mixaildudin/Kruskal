@@ -7,6 +7,7 @@ function GraphView( vertices, edges ) {
 	 * Нарисовать граф и его минимальное остовное дерево
 	 */
 	this.draw = function() {
+		clearsvg();
 		drawEdges();
 		drawVertices();
 	}
@@ -18,7 +19,7 @@ function GraphView( vertices, edges ) {
 	 */
 	function initVerticesToDraw() {
 		verticesToDraw = [];
-		var GRAPH_RADIUS = 330;
+		var GRAPH_RADIUS = 285;
 		var VERTEX_RADIUS = 17;
 
 		var xCenter = parseInt( $('svg').css('width') ) / 2,
@@ -174,6 +175,13 @@ function GraphView( vertices, edges ) {
 			svg.appendChild( e.edge );
 			svg.appendChild( e.weight );
 		}
+	}
+
+	/**
+	 * Очистить рабочую поверхность для рисования
+	 */
+	function clearsvg() {
+		document.getElementsByTagName('svg')[0].innerHTML = "";
 	}
 
 }

@@ -1,6 +1,6 @@
-function Kruskal() {
+function Kruskal( adjMatrix ) {
 
-	var adjMatrix = [
+	/*var adjMatrix = [
 		[0, 7, 0, 5, 0, 0, 0],
 		[7, 0, 8, 9, 7, 0, 0],
 		[0, 8, 0, 0, 5, 0, 0],
@@ -8,7 +8,7 @@ function Kruskal() {
 		[0, 7, 5, 15, 0, 8, 9],
 		[0, 0, 0, 6, 8, 0, 11],
 		[0, 0, 0, 0, 9, 11, 0]
-	];
+	];*/
 
 	var spanTree, spanTreeWeight;
 	var edges, vertices;
