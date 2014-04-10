@@ -1,4 +1,4 @@
-function Kruskal( adjMatrix ) {
+function Kruskal( vertices, edges ) {
 
 	/*var adjMatrix = [
 		[0, 7, 0, 5, 0, 0, 0],
@@ -11,11 +11,8 @@ function Kruskal( adjMatrix ) {
 	];*/
 
 	var spanTree, spanTreeWeight;
-	var edges, vertices;
 
 	this.getSpanningTree = function() {
-		vertices = createVertexList();
-		edges = createEdgeList();
 		edges = edges.sort( compareEdges );
 
 		spanTree = kruskalStart();
@@ -69,43 +66,6 @@ function Kruskal( adjMatrix ) {
 			return 0;
 
 		return (w1 < w2) ? (-1) : (1);
-	}
-
-	/**
-	 * Создать список всех вершин графа, попутно присвоив им номера и неповтоярющиеся цвета
-	 * @returns {Array} Список вершин
-	 */
-	function createVertexList() {
-		var vert = [];
-		for ( var i = 0; i < adjMatrix.length; i++ )
-			vert.push( new Vertex(i, i) );
-
-		return vert;
-	}
-
-	/**
-	 * Пройтись по матрице смежности и вернуть список ребер с их весами
-	 * @returns {Array} Массив объектов Edge
-	 */
-	function createEdgeList() {
-		var edges = [];
-		for ( var i = 0; i < adjMatrix.length; i++ ) {
-			for ( var j = 0; j <= i; j++ ) {
-				if( adjMatrix[i][j] == 0 ) //если вершины несмежные
-					continue;
-				else
-					edges.push( new Edge( vertices[j], vertices[i], adjMatrix[i][j] ) );
-			}
-		}
-		return edges;
-	}
-
-	this.getEdges = function() {
-		return edges;
-	}
-
-	this.getVertices = function() {
-		return vertices;
 	}
 
 	this.getSpanningTreeWeight = function() {

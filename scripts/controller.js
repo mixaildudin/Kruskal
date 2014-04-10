@@ -39,20 +39,29 @@ function Controller() {
 		});
 	}
 
+	var adjMatrix;
+	var vertices, edges;
+	
 	this.start = function() {
-		var adj = retrieveAdjMatrix();
+		adjMatrix = retrieveAdjMatrix();
+		vertices = createVertexList();
+		edges = createEdgeList();
 
-		var kruskal = new Kruskal( adj );
+		var kruskal = new Kruskal( vertices, edges );
 		var spanningTree = kruskal.getSpanningTree();
 
 		console.log( spanningTree );
 
-		var view = new GraphView( kruskal.getVertices(), kruskal.getEdges() );
+		var view = new GraphView( vertices, edges );
 		view.draw();
 
 		alert( "Найдено минимальное остовное дерево длины " + kruskal.getSpanningTreeWeight() );
 	}
 
+	/**
+	* Забрать с формы матрицу смежности
+	* @returns {Array} Матрица смежности графа
+	*/
 	function retrieveAdjMatrix() {
 		var adj = [];
 
@@ -70,4 +79,34 @@ function Controller() {
 
 		return adj;
 	}
+	
+	/**
+	 * Создать список всех вершин графа, попутно присвоив им номера и неповтоярющиеся цвета
+	 * @returns {Array} Список вершин
+	 */
+	function createVertexList() {
+		var vert = [];
+		for ( var i = 0; i < adjMatrix.length; i++ )
+			vert.push( new Vertex(i, i) );
+
+		return vert;
+	}
+
+	/**
+	 * Пройтись по матрице смежности и вернуть список ребер с их весами
+	 * @returns {Array} Массив объектов Edge
+	 */
+	function createEdgeList() {
+		var edges = [];
+		for ( var i = 0; i < adjMatrix.length; i++ ) {
+			for ( var j = 0; j <= i; j++ ) {
+				if( adjMatrix[i][j] == 0 ) //если вершины несмежные
+					continue;
+				else
+					edges.push( new Edge( vertices[j], vertices[i], adjMatrix[i][j] ) );
+			}
+		}
+		return edges;
+	}
+	
 }
