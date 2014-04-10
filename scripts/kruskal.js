@@ -16,7 +16,7 @@ function Kruskal( adjMatrix ) {
 	this.getSpanningTree = function() {
 		vertices = createVertexList();
 		edges = createEdgeList();
-		edges = qsort( edges, compareEdges, null );
+		edges = edges.sort( compareEdges );
 
 		spanTree = kruskalStart();
 
