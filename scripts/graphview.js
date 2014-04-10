@@ -29,8 +29,8 @@ function GraphView( vertices, edges ) {
 
 		for( var i = 0, angle = 0; i < vertices.length;  ) {
 			var vertex = vertices[i];
-			var x = GRAPH_RADIUS * Math.cos(angle) + xCenter,
-				y = GRAPH_RADIUS * Math.sin(angle) + yCenter;
+			var x = GRAPH_RADIUS * Math.cos(angle + Math.PI/2)  + xCenter,
+				y = -GRAPH_RADIUS * Math.sin(angle + Math.PI/2) + yCenter;
 
 			var newVertice = createNewVertice( x, y, VERTEX_RADIUS ),
 				newVertNumber = createNewVertNumber( vertex.getNumber(), x, y );
